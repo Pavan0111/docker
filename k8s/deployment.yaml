@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: scraper
-          image: your-dockerhub-username/aajtak-scraper:latest
+          image: pavan0111/aajtak-scraper:latest
           imagePullPolicy: Always
           volumeMounts:
             - name: output
