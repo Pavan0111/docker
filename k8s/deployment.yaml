@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aajtak-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aajtak-scraper
+  template:
+    metadata:
+      labels:
+        app: aajtak-scraper
+    spec:
+      containers:
+        - name: scraper
+          image: your-dockerhub-username/aajtak-scraper:latest
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: output
+              mountPath: /usr/src/app
+      volumes:
+        - name: output
+          hostPath:
+            path: /home/ubuntu/aajtak-data
+            type: DirectoryOrCreate
